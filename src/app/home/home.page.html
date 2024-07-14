@@ -1,30 +1,19 @@
 <ion-content class="custom-bg-color">
+
   <swiper-container class="sp-bg-color">
 
-    <swiper-slide>
-      <h2> Titulo 1</h2>
-      <img src = "https://olondriz.com/wp-content/uploads/2020/04/ambar-perrito-1.jpg"/>
-      <p>Parrafo del slide 1</p>
-    </swiper-slide>
-
-    <swiper-slide>
-      <h2> Titulo 2</h2>
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <img src = "https://images.ctfassets.net/denf86kkcx7r/4IPlg4Qazd4sFRuCUHIJ1T/f6c71da7eec727babcd554d843a528b8/gatocomuneuropeo-97?fm=webp&w=612"/>
-      <p class="cool-title">Parrafo del slide 2</p>
-    </swiper-slide>
-
-    <swiper-slide>
-      <h2 class="cool-title"> Titulo 3</h2>
-      <ion-icon name= "bandage-outline"></ion-icon>
+    <swiper-slide *ngFor="let slide of slides">
+      <h2>{{slide.title}}</h2>
+      <ion-icon name= "{{slide.icon}}"></ion-icon>
       <ion-avatar class="style-avatar">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <img alt="Silhouette of a person's head" src="{{slide.avatar}}" />
       </ion-avatar>
-      <p>Parrafo del slide 3</p>
-
+      <img src = "{{slide.image}}"/>
+      <p>{{slide.description}}</p>
     </swiper-slide>
 
   </swiper-container>
+
 </ion-content>
+
+ 
