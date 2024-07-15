@@ -1,0 +1,14 @@
+.bg-home {
+    --background: rgb(28, 28, 46);
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+}
+.item ion-icon {
+    font-size: 36px;
+}
