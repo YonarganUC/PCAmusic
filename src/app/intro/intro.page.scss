@@ -1,0 +1,51 @@
+swiper-container {
+    padding: 5%;
+  }
+  
+  swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cool-title {
+    color:red;
+  }
+  
+  .custom-bg-color {
+    --background: rgb(139, 174, 243);
+    --padding-top: 5%;
+    --padding-start: 5%;
+    --padding-end: 5%;
+  }
+  
+  .style-avatar {
+    --border-radius: 40px;
+  }
+  
+  .sp-bg-color {
+    background-color: rgb(250, 160, 230);
+  }
+  
+  .style-name{
+    color: rgb(26, 143, 232);
+    text-decoration: underline;
+  }
+  
+  .style-user {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .style-description{
+    color: black;
+  }
+
+  .style-close{
+    display: flex;
+    align-items: end;
+  }
