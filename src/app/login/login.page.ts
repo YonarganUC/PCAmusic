@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenicateService } from '../services/authenicate.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,11 @@ export class LoginPage implements OnInit {
     ]
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder, 
+    private authService: AuthenicateService, 
+    private navCtrl: NavController
+  ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -42,6 +48,9 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   loginUser(datalogin: any) {
-    console.log(datalogin);
+    console.log(datalogin)
+    this.authService.loginUser(datalogin).then(res =>{
+      this.navCtrl.navigateForward("/home")
+    })
   }
 }

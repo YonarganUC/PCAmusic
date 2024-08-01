@@ -43,8 +43,14 @@
       </ng-container>
     </div>
 
-    <ion-button type="submit" [disabled]="!loginForm.valid">
-      Login
+    <ion-button 
+      type="submit" 
+      [disabled]="!loginForm.valid"
+      expand="block"
+      size="large"ç
+      shape="round"
+      >
+      Login <ion-icon name="checkmark"></ion-icon>
     </ion-button>
   </form>
 </ion-content>
