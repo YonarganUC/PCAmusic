@@ -9,6 +9,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup
+  validation_messages = {
+    email: [
+      {type: "required", message: "El email es obligatorio."},
+      {type: "email", message: "El email es inválido."}
+    ]
+  }
 
   constructor(
     private formBuilder:FormBuilder
