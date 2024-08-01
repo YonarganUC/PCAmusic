@@ -16,9 +16,9 @@
   <swiper-container slides-per-view="4" speed="400">
     <swiper-slide *ngFor="let artstis of artists">
       <ion-avatar>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfqunr-sTgqWDrCShHA6r5Fw2pQZfPtmVf3Vi-SEHMPJtBdonajE9EJxoYO7eMKgEdAlQ&usqp=CAU"/>
+        <img src="{{artstis.image}}"/>
       </ion-avatar>
-      <span>Kay Kyser</span>
+      <span>{{artstis.name}}</span>
     </swiper-slide>
   </swiper-container>
 </ion-content>
