@@ -11,7 +11,9 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class LoginPage implements OnInit {
 
-  loginForm: FormGroup;
+  errorMessage: any
+  loginForm: FormGroup
+
   validation_messages = {
     email: [
       { type: "required", message: "El email es obligatorio." },
@@ -19,11 +21,9 @@ export class LoginPage implements OnInit {
     ],
     password: [
       { type: "required", message: "La contraseña es obligatoria." },
-      { type: "minlength", message: "La contraseña es muy corta." },
     ]
-  };
+  }
 
-  errorMessage: any;
   constructor(
     private formBuilder: FormBuilder, 
     private authService: AuthenicateService, 
@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
     private storage: Storage
   ) {
     this.loginForm = this.formBuilder.group({
+      
       email: new FormControl(
         "",
         Validators.compose([
@@ -42,8 +43,7 @@ export class LoginPage implements OnInit {
       password: new FormControl(
         "",
         Validators.compose([
-          Validators.required,
-          Validators.minLength(8)
+          Validators.required
         ])
       )
     });

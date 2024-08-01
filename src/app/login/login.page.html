@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content>
-  <figure>
-    <img src="assets/image/profile.jpg"/>
+  <figure style="text-align:center">
+    <img src="assets/image/profile.jpg"  height='180'/>
   </figure>
   
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
@@ -18,13 +18,11 @@
         formControlName="email">
       </ion-input>
     </ion-item>
-    <div>
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div *ngIf="loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty">
-          {{validation.message}}
-        </div>
-      </ng-container>
-    </div>
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <div *ngIf="loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
 
     <ion-item>
       <ion-input 
@@ -35,13 +33,11 @@
         type="password">
       </ion-input>
     </ion-item>
-    <div>
-      <ng-container *ngFor="let validation of validation_messages.password">
-        <div *ngIf="loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty">
-          {{validation.message}}
-        </div>
-      </ng-container>
-    </div>
+    <ng-container *ngFor="let validation of validation_messages.password">
+      <div *ngIf="loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
 
     <ion-button 
       type="submit" 
@@ -53,9 +49,9 @@
     </ion-button>
     
     <ion-button 
-      type="submit"
       expand="block"
       shape="round"
+      [routerLink]="['/register']"
       >
       Registro <ion-icon name="body"></ion-icon>
     </ion-button>

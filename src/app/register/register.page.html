@@ -1,29 +1,60 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
+  <ion-toolbar style="text-align:center">
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <figure>
-    <img src="assets\image\profile.jpg">
+  <figure style="text-align:center">
+    <img src="assets\image\profile.jpg" height='180'>
   </figure>
 
-  <form [formGroup] = "registerForm">
+  <form [formGroup] = "registerForm" (ngSubmit)="registerUser(registerForm.value)">
     <ion-item>
       <ion-input label="Nombre:" placeholder="Escriba su nombre" formControlName ="name"></ion-input>
     </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.name">
+      <div *ngIf="registerForm.get('name')?.hasError(validation.type) && registerForm.get('name')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
 
     <ion-item>
       <ion-input label="Apelido:" placeholder="Escriba su apellido" formControlName ="last_name"></ion-input>
     </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.last_name">
+      <div *ngIf="registerForm.get('last_name')?.hasError(validation.type) && registerForm.get('last_name')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
 
     <ion-item>
       <ion-input label="Email:" placeholder="Escriba su Correo" formControlName ="email"></ion-input>
     </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <div *ngIf="registerForm.get('email')?.hasError(validation.type) && registerForm.get('email')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
 
     <ion-item>
       <ion-input label="Contraseña:" placeholder="Escriba su contraseña" formControlName ="password"></ion-input>
     </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.password">
+      <div *ngIf="registerForm.get('password')?.hasError(validation.type) && registerForm.get('password')?.dirty">
+        {{validation.message}}
+      </div>
+    </ng-container>
+
+    <ion-button 
+      type="submit" 
+      expand="block"
+      shape="round"
+      [disabled]="!registerForm.valid"
+      >
+      Registrarse <ion-icon name="checkmark-circle"></ion-icon>
+    </ion-button>
+
   </form>
+  
 </ion-content>
