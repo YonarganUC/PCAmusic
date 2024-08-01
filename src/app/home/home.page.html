@@ -9,8 +9,16 @@
 
   <div class="item">
     <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbdmLoAJJK9fx9oTQmZxH42Vuip_CHAd8gew&s"/>
-    <h1 class="ion-text-uppercase">Home</h1> 
     <ion-icon name="arrow-forward" (click)="accsess()"></ion-icon>
   </div>
   
+  <h1>Artistas</h1>
+  <swiper-container slides-per-view="4" speed="400">
+    <swiper-slide *ngFor="let artstis of artists">
+      <ion-avatar>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfqunr-sTgqWDrCShHA6r5Fw2pQZfPtmVf3Vi-SEHMPJtBdonajE9EJxoYO7eMKgEdAlQ&usqp=CAU"/>
+      </ion-avatar>
+      <span>Kay Kyser</span>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
