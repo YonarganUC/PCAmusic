@@ -10,6 +10,7 @@ import { MusicService } from '../services/music.service';
 
 export class HomePage implements OnInit {
 
+  artistsJson: any
   artists: any
 
   constructor(
@@ -18,8 +19,19 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.artists = this.musicService.getArtistJson().artists
-    console.log(this.artists)
+   
+    this.artistsJson = this.musicService.getArtistJson().artists
+    console.log(this.artistsJson)
+     /*primera forma
+    this.musicService.getArtists().subscribe((data: any) => {
+      this.artists = data
+      console.log(this.artists)
+    })
+    */
+   this.musicService.getArtists().then(data => {
+    this.artists = data
+    console.log(data)
+   })
   }
 
   accsess() {
