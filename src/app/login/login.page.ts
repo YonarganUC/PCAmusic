@@ -51,9 +51,9 @@ export class LoginPage implements OnInit {
 
   ngOnInit() { }
 
-  loginUser(datalogin: any) {
+  login(datalogin: any) {
     console.log(datalogin)
-    this.authService.loginUser(datalogin).then(res =>{
+    this.authService.loginUser(datalogin).then(res => {
       this.errorMessage=""
       this.storage.set("isuserLoggedIn",true)
       this.navCtrl.navigateForward("/home")

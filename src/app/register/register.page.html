@@ -1,6 +1,9 @@
 <ion-header>
-  <ion-toolbar style="text-align:center">
-    <ion-title>Register</ion-title>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="goToLogin()"> <ion-icon name="arrow-back"></ion-icon> </ion-button>
+      <ion-title class=""ion-text-center>Registro de Usuario</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +12,7 @@
     <img src="assets\image\profile.jpg" height='180'>
   </figure>
 
-  <form [formGroup] = "registerForm" (ngSubmit)="registerUser(registerForm.value)">
+  <form [formGroup] = "registerForm" (ngSubmit)="register(registerForm.value)">
     <ion-item>
       <ion-input label="Nombre:" placeholder="Escriba su nombre" formControlName ="name"></ion-input>
     </ion-item>
