@@ -9,7 +9,8 @@ export class AuthenicateService {
   loginUser(credentials: any) {
     return new Promise((accept, reject) => {
       if(
-        credentials.email == "loganyoshua@gmail.com"
+        credentials.email == "loganyoshua@gmail.com" &&
+        credentials.password == "123456789"
       ) {
         accept("Login Correcto")
       } else  {

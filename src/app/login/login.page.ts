@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenicateService } from '../services/authenicate.service';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,13 @@ export class LoginPage implements OnInit {
     ]
   };
 
+  errorMessage: any;
   constructor(
     private formBuilder: FormBuilder, 
     private authService: AuthenicateService, 
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private alertController: AlertController,
+    private storage: Storage
   ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
@@ -50,7 +54,22 @@ export class LoginPage implements OnInit {
   loginUser(datalogin: any) {
     console.log(datalogin)
     this.authService.loginUser(datalogin).then(res =>{
+      this.errorMessage=""
+      this.storage.set("isuserLoggedIn",true)
       this.navCtrl.navigateForward("/home")
+    }).catch(err => {
+      this.errorMessage = err
+      this.presentAlert(this.errorMessage)
     })
+  }
+
+  async presentAlert(mss: string) {
+    const alert = await this.alertController.create({
+      header: "Error al Ingresar",
+      message: mss,
+      buttons: ['Aceptar']
+    });
+
+    await alert.present();
   }
 }
