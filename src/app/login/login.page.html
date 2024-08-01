@@ -6,32 +6,45 @@
 
 <ion-content>
   <figure>
-    <img src="assets\image\profile.jpg"/>
+    <img src="assets/image/profile.jpg"/>
   </figure>
   
-  <form [formGroup]="loginForm" (ngSubmit)="(loginUser(loginForm.value))">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
     <ion-item>
-      <ion-input label="Email" labelPlacement="floating" placegolder="Correo electronico" formControlName="email"></ion-input>
+      <ion-input 
+        label="Email" 
+        labelPlacement="floating" 
+        placeholder="Correo electrónico" 
+        formControlName="email">
+      </ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input label="Contraseña" labelPlacement="floating" placegolder="Correo electronico" formControlName="password"></ion-input>
-    </ion-item>
-
     <div>
-      <ng-container *ngFor = "let validation of validation_messages.email">
-        <div *ngIf="(loginForm.get('email')?.hasError(validation.type) && 
-        loginForm.get('email')?.dirty)">
-        {{validation.message}}
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div *ngIf="loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty">
+          {{validation.message}}
         </div>
       </ng-container>
     </div>
 
-    <ion-button
-      type="Submit"
-      [disabled] = "!loginForm.valid"
-    >
+    <ion-item>
+      <ion-input 
+        label="Contraseña" 
+        labelPlacement="floating" 
+        placeholder="Contraseña" 
+        formControlName="password"
+        type="password">
+      </ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div *ngIf="loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty">
+          {{validation.message}}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button type="submit" [disabled]="!loginForm.valid">
       Login
     </ion-button>
   </form>
-
 </ion-content>
