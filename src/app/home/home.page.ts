@@ -14,6 +14,11 @@ export class HomePage implements OnInit {
 
   artistsJson: any
   artists: any
+  song = {
+    name: '',
+    playing: false,
+    preview_url: ''
+  }
 
   constructor(
     private router: Router,
@@ -51,6 +56,9 @@ export class HomePage implements OnInit {
         id: artstis.id,
         songs: songs
       }
+    })
+    modal.onDidDismiss().then(dataReturned => {
+      this.song = dataReturned.data
     })
     modal.present()
   }
